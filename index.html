@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>CCTV GIS 2</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://raw.githubusercontent.com/kang-chan/hamancctv4/main/favicon.ico" />
-	<link rel="stylesheet" href="mmw.css">
-<script type ="text/javascript" src="mmw.js"> </script>
+	<link rel="stylesheet" href="https://raw.githubusercontent.com/hamancctv/2/main/mmw.css">
+<script type ="text/javascript" src="https://raw.githubusercontent.com/hamancctv/2/main/mmw.js"> </script>
 </head> 
     
    <style>
@@ -313,7 +313,7 @@ navigator.geolocation.getCurrentPosition(function(pos) {
 
 // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 var positions = [
-{ content: '<div>문-001-가야동산정03</div>', latlng: new kakao.maps.LatLng(35.265974103225,128.424543329418), markerImage: new daum.maps.MarkerImage('https://raw.githubusercontent.com/kang-chan/hamancctv2/main/gmark.png', imageSize = new kakao.maps.Size(40, 42)) },
+{ content: '문-001-가야동산정03', latlng: new kakao.maps.LatLng(35.265974103225,128.424543329418), markerImage: new daum.maps.MarkerImage('https://raw.githubusercontent.com/kang-chan/hamancctv2/main/gmark.png', imageSize = new kakao.maps.Size(40, 42)) },
 { content: '<div>문-002-함안향교06</div>', latlng: new kakao.maps.LatLng(35.2363014988955,128.418194091563), markerImage: new daum.maps.MarkerImage('https://raw.githubusercontent.com/kang-chan/hamancctv2/main/gmark.png', imageSize = new kakao.maps.Size(40, 42)) },
 { content: '<div>문-003-칠원새발자국화석02(회전)</div>', latlng: new kakao.maps.LatLng(35.3103216999982,128.513169600003), markerImage: new daum.maps.MarkerImage('https://raw.githubusercontent.com/kang-chan/hamancctv2/main/gmark.png', imageSize = new kakao.maps.Size(40, 42)) },
 { content: '<div>문-004-고분10-03(회전)</div>', latlng: new kakao.maps.LatLng(35.269303,128.405503), markerImage: new daum.maps.MarkerImage('https://raw.githubusercontent.com/kang-chan/hamancctv2/main/gmark.png', imageSize = new kakao.maps.Size(40, 42)) },
@@ -1074,6 +1074,22 @@ function makeOverListener(map, marker2, infowindow) {
         infowindow.open(map, marker2);
          var latlng = this.getPosition();
         $('#gpsyx').val(latlng.getLat() + ', ' + latlng.getLng());  
+var content = infowindow.getContent();
+        $('#keyword').val(content)
+ var value, name, item, i;
+
+        value = document.getElementById("keyword").value.toUpperCase();
+        item = document.getElementsByClassName("sel_txt");
+
+        for(i=0;i<item.length;i++){
+          name = item[i].getElementsByClassName("name");
+          if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
+            item[i].style.display = "flex";
+          }else{
+            item[i].style.display = "none";
+          }
+        }
+
     };
 }
 
@@ -2023,6 +2039,8 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
           }
         }
       };
+    
+  
     
 </script>
   
