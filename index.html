@@ -1193,7 +1193,8 @@ kakao.maps.event.addListener(map, 'center_changed', function() {
     
 
         function btnsearch_click() {
-
+//1 . 모든 포커스 태그를 blur 하는거같다. 
+$(':focus').blur();  
 		// 주소-좌표 변환 객체를 생성합니다
 		var geocoder = new kakao.maps.services.Geocoder();
 		
