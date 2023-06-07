@@ -91,7 +91,7 @@ var mapCenter = new kakao.maps.LatLng(35.2725308711779, 128.406307024695), // �
     mapOption = {
         center: mapCenter, // 지도의 중심좌표
         level: 4, // 지도의 확대 레벨 
-	                mapTypeId: kakao.maps.MapTypeId.HYBRID
+	              //  mapTypeId: kakao.maps.MapTypeId.HYBRID
 
     };
 
@@ -1253,15 +1253,18 @@ circle.setMap(null);
         
             else {
                 // 장소 검색 객체를 생성합니다
-var ps = new kakao.maps.services.Places(); 
+                var ps = new kakao.maps.services.Places();
+                // 키워드로 장소를 검색합니다
+                ps.keywordSearch($('#keyword').val(), placesSearchCB, {
+  location : new kakao.maps.LatLng(35.2725308711779, 128.406307024695)
+                });
 
-// 키워드로 장소를 검색합니다
-ps.keywordSearch($('#keyword').val(), placesSearchCB); 
 
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB (data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
 
+    if (status === kakao.maps.services.Status.OK) {
+console.log(result);
        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
        
