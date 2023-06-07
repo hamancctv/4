@@ -2689,9 +2689,10 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
   
  <script>   
      // 2-2. input:text 복사
-	 	 //1 . 모든 포커스 태그를 blur 하는거같다. 
-$(':focus').blur();  
+	 
     document.getElementById("btn_input_copy").onclick = function(){
+	    	 //1 . 모든 포커스 태그를 blur 하는거같다. 
+$(':focus').blur();  
         const input_text = document.getElementById("gpsyx");
         gpsyx.select();
         document.execCommand('copy');
