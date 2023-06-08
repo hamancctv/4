@@ -1,5 +1,6 @@
 
 
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PL4ZNE7VNE"></script>
@@ -1232,9 +1233,14 @@ $(':focus').blur();
                 // 장소 검색 객체를 생성합니다
                 var ps = new kakao.maps.services.Places();
                 // 키워드로 장소를 검색합니다
-                ps.keywordSearch($('#keyword').val(), placesSearchCB, {
-  location : new kakao.maps.LatLng(35.2725308711779, 128.406307024695)
-                });
+     var sw = new kakao.maps.LatLng(35.17555660661043, 128.26797171708276),
+      ne = new kakao.maps.LatLng(35.40252210703136, 128.58606267890818)
+var bo = new kakao.maps.LatLngBounds(sw, ne)
+var options = {
+bounds : bo
+}
+    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+                ps.keywordSearch($('#keyword').val(), placesSearchCB, options);
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB (data, status, pagination) {
 
